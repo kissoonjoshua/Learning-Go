@@ -1,2 +1,2 @@
 # Projects (WIP)
-- [ ] Data Structures
+- [x] Data Structures
