@@ -1,31 +1,35 @@
 package stack
 
-import "fmt"
-
 type Stack[T any] struct {
 	items []T
+}
+
+func New[T any](items ...T) *Stack[T] {
+	return &Stack[T]{
+		items: items,
+	}
 }
 
 func (s *Stack[T]) Push(item T) {
 	s.items = append(s.items, item)
 }
 
-func (s *Stack[T]) Peek() (T, error) {
+func (s *Stack[T]) Peek() (T, bool) {
 	if s.Empty() {
 		var zero T
-		return zero, fmt.Errorf("stack is empty")
+		return zero, false
 	}
-	return s.items[len(s.items)-1], nil
+	return s.items[len(s.items)-1], true
 }
 
-func (s *Stack[T]) Pop() (T, error) {
+func (s *Stack[T]) Pop() (T, bool) {
 	if s.Empty() {
 		var zero T
-		return zero, fmt.Errorf("stack is empty")
+		return zero, false
 	}
 	item := s.items[len(s.items)-1]
 	s.items = s.items[:len(s.items)-1]
-	return item, nil
+	return item, true
 }
 
 func (s *Stack[T]) Size() int {

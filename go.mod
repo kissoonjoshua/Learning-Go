@@ -1,4 +1,4 @@
-module data_structures
+module github.com/kissoonjoshua/Learning-Go
 
 go 1.24.13
 
